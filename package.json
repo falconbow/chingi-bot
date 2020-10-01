@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "botLogic/node index.js",
+    "start": "node botLogic/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon index.js"
   },

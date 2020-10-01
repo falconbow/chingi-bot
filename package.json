@@ -1,0 +1,32 @@
+{
+  "name": "chingi-bot",
+  "version": "1.0.0",
+  "description": "This is a chingi bot.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "micro-bot",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nruseev/chingi-bot.git"
+  },
+  "author": "nruseev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nruseev/chingi-bot/issues"
+  },
+  "homepage": "https://github.com/nruseev/chingi-bot#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "micro-bot": "^2.5.3",
+    "mongoose": "^5.10.7",
+    "node-fetch": "^2.6.0",
+    "pokedex-promise-v2": "^3.2.0",
+    "telegraf": "^3.38.0",
+    "telegraf-inline-menu": "^5.0.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

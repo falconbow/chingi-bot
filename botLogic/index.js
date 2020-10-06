@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import packageInfo from '../package.json'
+import express from 'express'
 import Telegraf from 'telegraf';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -135,4 +137,19 @@ function oneDayHasPassed() {
   }
 }
 
-bot.launch();
+
+var app = express();
+
+app.get('/', function (req, res) {
+  res.json({ version: packageInfo.version });
+  bot.launch();
+});
+
+var server = app.listen(process.env.PORT, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Web server started at http://%s:%s', host, port);
+});
+
+

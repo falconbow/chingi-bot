@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "micro-bot",
+    "start": "node --experimental-json-modules botLogic/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon index.js"
   },
@@ -21,12 +21,18 @@
   "homepage": "https://github.com/nruseev/chingi-bot#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fancy-log": "^1.3.3",
+    "fs": "0.0.1-security",
     "micro-bot": "^2.5.3",
     "mongoose": "^5.10.7",
     "node-fetch": "^2.6.0",
     "pokedex-promise-v2": "^3.2.0",
+    "read": "^1.0.7",
     "telegraf": "^3.38.0",
     "telegraf-inline-menu": "^5.0.0",
+    "vinyl-fs": "^3.0.3",
+    "vinyl-ftp": "^0.6.1",
     "xmlhttprequest": "^1.8.0"
   }
 }

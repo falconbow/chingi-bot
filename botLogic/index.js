@@ -106,7 +106,7 @@ bot.command('who', async (ctx) => {
   const UserModel = mongoose.model(`${ctx.chat.id}`, userSchema);
   let userList = await UserModel.getUsers();
   await userList.map((e) => {
-    ctx.reply(`++++${e.userCounter}`);
+    ctx.reply(`+++${e.userCounter}`);
   });
 });
 

@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import packageInfo from '../package.json'
 import express from 'express'
-import Telegraf from 'telegraf';
 import dotenv from 'dotenv';
 dotenv.config();
 import userSchema from '../userLogic/userdatabase.js';
@@ -71,18 +70,17 @@ bot.command('pokemon', (ctx) => ctx.scene.enter('pokemon'));
 
 bot.start((ctx) => ctx.reply("You can enter Pokémon's name and get its info."));
 
-// const registartionScene = new Scene('registration')
-bot.command('reg', (ctx, error) => {
+bot.command('reg', async (ctx) => {
   const UserModel = mongoose.model(`${ctx.chat.id}`, userSchema);
   try {
-    UserModel.addNew({
+    await UserModel.addNew({
       firstName: ctx.from.first_name,
       username: ctx.from.username,
       userCounter: 0
     });
   }
-  catch (error) {
-    ctx.reply("uzhe est'");
+  catch (err) {
+    await ctx.reply("uzhe est'");
   };
 });
 bot.command('user', async (ctx) => {
@@ -106,7 +104,7 @@ bot.command('who', async (ctx) => {
   const UserModel = mongoose.model(`${ctx.chat.id}`, userSchema);
   let userList = await UserModel.getUsers();
   await userList.map((e) => {
-    ctx.reply(`+++${e.userCounter}`);
+    ctx.reply(`${e.firstName} ${e.userCounter}`);
   });
 });
 
@@ -136,20 +134,6 @@ function oneDayHasPassed() {
     return true;
   }
 }
-
-
-var app = express();
-
-app.get('/', function (req, res) {
-  res.json({ version: packageInfo.version });
-  bot.launch();
-});
-
-var server = app.listen(process.env.PORT, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Web server started at http://%s:%s', host, port);
-});
+bot.launch();
 
 
